@@ -9,6 +9,9 @@ const inventoryRoutes = require('./routes/inventoryRoutes');
 
 const app = express();
 
+app.get('/', (req, res) => {
+  res.send('API is running');
+});
  
 app.use(cors());
 app.use(express.json());
@@ -26,7 +29,7 @@ db.exec(schema, (err) => {
  
 app.use('/api', supplierRoutes);
 app.use('/api', inventoryRoutes);
-
+ 
  
 const PORT = 5000;
 
