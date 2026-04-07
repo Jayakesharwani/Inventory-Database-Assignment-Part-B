@@ -15,7 +15,7 @@ A backend system to manage suppliers and their inventory. This project allows su
 --- 
 
 📂 Project Structure
-
+```
 inventory-database-project/
 ├── src/
 │   ├── db/
@@ -30,6 +30,7 @@ inventory-database-project/
 │   └── server.js
 ├── package.json
 └── README.md
+```
 
 ---
 
