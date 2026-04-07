@@ -9,6 +9,27 @@ A backend system to manage suppliers and their inventory. This project allows su
 * **Node.js**
 * **Express.js**
 * **SQLite**
+* **better-sqlite3**
+* **Postman (API testing)**
+
+--- 
+
+📂 Project Structure
+
+inventory-database-project/
+├── src/
+│   ├── db/
+│   │   ├── schema.sql
+│   │   └── connection.js
+│   ├── routes/
+│   │   ├── supplierRoutes.js
+│   │   └── inventoryRoutes.js
+│   ├── controllers/
+│   │   ├── supplierController.js
+│   │   └── inventoryController.js
+│   └── server.js
+├── package.json
+└── README.md
 
 ---
 
@@ -73,6 +94,8 @@ SQL was chosen because:
   * GROUP BY
   * Aggregations (`SUM`)
 * SQLite is lightweight and perfect for small backend projects
+
+**The better-sqlite3 library was used for improved performance and stability during deployment.**
 
 ---
 
@@ -183,8 +206,10 @@ Use **Postman** to test all APIs:
 ## ▶️ How to Run Locally
 
 ```bash
-npm install
+npm install 
 npm run dev
+OR
+npm start
 ```
 
 Server will start on:
@@ -206,9 +231,8 @@ http://localhost:5000
 
 ## 📎 Submission Links
 
-* **GitHub Repo:** (Add your link)
-* **Deployed Backend:** (Add if deployed)
-* **Screen Recording:** (Add drive link)
+* **GitHub Repo:** https://github.com/Jayakesharwani/Inventory-Database-Assignment-Part-B
+* **Deployed Backend:** https://inventory-database-assignment-part-b.onrender.com
 
 ---
 
