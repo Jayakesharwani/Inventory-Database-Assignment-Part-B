@@ -1,25 +1,26 @@
-const sqlite3 = require("sqlite3").verbose();
+const Database = require("better-sqlite3");
 const fs = require("fs");
 const path = require("path");
 
-const db = new sqlite3.Database("./inventory.db", (err) => {
-  if (err) {
-    console.error("DB Error:", err.message);
-  } else {
-    console.log("Connected to SQLite DB");
+// Create/Open DB
+const db = new Database("inventory.db");
 
-   
-    const schemaPath = path.join(__dirname, "schema.sql");
-    const schema = fs.readFileSync(schemaPath, "utf-8");
+// Enable foreign keys
+db.exec("PRAGMA foreign_keys = ON");
 
-    db.exec(schema, (err) => {
-      if (err) {
-        console.error("Schema Error:", err.message);
-      } else {
-        console.log("Schema created successfully");
-      }
-    });
-  }
-});
+try {
+  console.log("Connected to SQLite DB");
+
+  // Read schema file
+  const schemaPath = path.join(__dirname, "schema.sql");
+  const schema = fs.readFileSync(schemaPath, "utf-8");
+
+  // Execute schema
+  db.exec(schema);
+
+  console.log("Schema created successfully");
+} catch (err) {
+  console.error("DB Error:", err.message);
+}
 
 module.exports = db;
