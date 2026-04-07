@@ -1,6 +1,5 @@
 const db = require('../db/connection');
 
- 
 exports.createInventory = (req, res) => {
   try {
     const { supplier_id, product_name, quantity, price } = req.body;
@@ -22,10 +21,10 @@ exports.createInventory = (req, res) => {
     }
 
     const result = db
-      .prepare(
-        `INSERT INTO inventory (supplier_id, product_name, quantity, price)
-         VALUES (?, ?, ?, ?)`
-      )
+      .prepare(`
+        INSERT INTO inventory (supplier_id, product_name, quantity, price)
+        VALUES (?, ?, ?, ?)
+      `)
       .run(supplier_id, product_name, quantity, price);
 
     res.status(201).json({
@@ -33,7 +32,7 @@ exports.createInventory = (req, res) => {
       supplier_id,
       product_name,
       quantity,
-      price,
+      price
     });
 
   } catch (err) {
@@ -41,7 +40,7 @@ exports.createInventory = (req, res) => {
   }
 };
 
- 
+
 exports.getInventory = (req, res) => {
   try {
     const rows = db.prepare(`
@@ -61,7 +60,7 @@ exports.getInventory = (req, res) => {
     res.json({
       success: true,
       count: rows.length,
-      data: rows,
+      data: rows
     });
 
   } catch (err) {
@@ -69,7 +68,7 @@ exports.getInventory = (req, res) => {
   }
 };
 
- 
+
 exports.getGroupedInventory = (req, res) => {
   try {
     const rows = db.prepare(`
@@ -86,7 +85,7 @@ exports.getGroupedInventory = (req, res) => {
 
     res.json({
       success: true,
-      suppliers: rows,
+      suppliers: rows
     });
 
   } catch (err) {
